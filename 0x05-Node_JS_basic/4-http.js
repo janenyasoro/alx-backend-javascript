@@ -1,7 +1,7 @@
 const http = require('http');
 
 /**
- * HTTP server that responds with "Hello Holberton School!" to any endpoint.
+ * HTTP server that responds with "Hello ALX!" to any endpoint.
  * @module 4-http
  */
 
