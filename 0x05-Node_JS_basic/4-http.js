@@ -1,21 +1,27 @@
 const http = require('http');
 
-const PORT = 1245;
-const HOST = 'localhost';
+/**
+ * HTTP server that responds with "Hello Holberton School!" to any endpoint.
+ * @module 4-http
+ */
 
-// Create the HTTP server
-const app = http.createServer((req, res) => {
-  const responseText = 'Hello ALX!';
+/**
+ * Callback function that handles incoming HTTP requests.
+ * @param {http.IncomingMessage} req The incoming HTTP request.
+ * @param {http.ServerResponse} res The server response that will be sent back to the client.
+ */
+const handleRequest = (req, res) => {
+  // Set the response header to indicate that the response body will be plain text
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  // Send the response body
+  res.end('Hello Holberton School!');
+};
 
-  res.statusCode = 200; // Set HTTP status code
-  res.setHeader('Content-Type', 'text/plain'); // Set response content type
-  res.end(responseText); // Send the response and end it
-});
+// Create a new HTTP server and pass the handleRequest function as the callback
+const app = http.createServer(handleRequest);
 
-// Start the server
-app.listen(PORT, HOST, () => {
-  console.log(`Server listening at -> http://${HOST}:${PORT}`);
-});
+// Start the server and have it listen on port 1245
+app.listen(1245);
 
+// Export the app variable so that it can be used by other modules
 module.exports = app;
-
