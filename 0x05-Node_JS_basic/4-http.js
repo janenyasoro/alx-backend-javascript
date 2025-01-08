@@ -11,6 +11,7 @@ app.on('request', (_, res) => {
   res.setHeader('Content-Length', responseText.length);
   res.statusCode = 200;
   res.write(Buffer.from(responseText));
+  res.end(); // Ensure the response ends
 });
 
 app.listen(PORT, HOST, () => {
@@ -18,3 +19,4 @@ app.listen(PORT, HOST, () => {
 });
 
 module.exports = app;
+
